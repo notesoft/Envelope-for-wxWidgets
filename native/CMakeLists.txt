@@ -1,2 +1,2 @@
 # Place in this folder native project files.
-# Of course, include CMakeList.txt.
+# Of course, replace this CMakeList.txt to native project CMakeList.txt

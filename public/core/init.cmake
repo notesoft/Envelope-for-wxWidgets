@@ -49,7 +49,7 @@ function(enInitPrivate)
     string(APPEND macrText "\n# ...")
 
     string(APPEND initReadMe "# Place in this folder native project files.\n")
-    string(APPEND initReadMe "# Of course, include CMakeList.txt.\n")
+    string(APPEND initReadMe "# Of course, replace this CMakeList.txt to native project CMakeList.txt\n")
 
     string(APPEND natvText "# Native project initialization setup here.\n")
     string(APPEND natvText "# Parse project version etc...\n")
