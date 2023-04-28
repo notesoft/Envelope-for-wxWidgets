@@ -88,6 +88,25 @@ function(enInitPrivate)
         file(WRITE ${CMAKE_SOURCE_DIR}/public/core/native.cmake ${natvText} )
     endif()
 
+
+    if (NOT EXISTS ${CMAKE_SOURCE_DIR}/public/items/initialization) 
+        file(MAKE_DIRECTORY  ${CMAKE_SOURCE_DIR}/public/items/initialization)
+    endif()
+    if (NOT EXISTS ${CMAKE_SOURCE_DIR}/public/items/implemenation) 
+        file(MAKE_DIRECTORY  ${CMAKE_SOURCE_DIR}/public/items/implemenation)
+    endif()
+    if (NOT EXISTS ${CMAKE_SOURCE_DIR}/public/items/finalization) 
+        file(MAKE_DIRECTORY  ${CMAKE_SOURCE_DIR}/public/items/finalization)
+    endif()
+    if (NOT EXISTS ${CMAKE_SOURCE_DIR}/public/items/beforebuild) 
+        file(MAKE_DIRECTORY  ${CMAKE_SOURCE_DIR}/public/items/beforebuild)
+    endif()
+    if (NOT EXISTS ${CMAKE_SOURCE_DIR}/public/items/afterbuild) 
+        file(MAKE_DIRECTORY  ${CMAKE_SOURCE_DIR}/public/items/afterbuild)
+    endif()
+
+
+
 endfunction()
 
 
