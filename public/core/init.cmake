@@ -82,9 +82,9 @@ function(enInitPrivate)
     endif()
 
     if (NOT EXISTS ${CMAKE_SOURCE_DIR}/native/CMakeLists.txt) 
-        file(WRITE ${CMAKE_SOURCE_DIR}/native/README.TXT  ${initReadMe})
+        file(WRITE ${CMAKE_SOURCE_DIR}/native/CMakeLists.txt  ${initReadMe})
     endif()
-    if (NOT EXISTS ${CMAKE_SOURCE_DIR}/public/core/native.cmake AND EXISTS ${CMAKE_SOURCE_DIR}/native/CMakeLists.txt ) 
+    if (NOT EXISTS ${CMAKE_SOURCE_DIR}/public/core/native.cmake) 
         file(WRITE ${CMAKE_SOURCE_DIR}/public/core/native.cmake ${natvText} )
     endif()
 
