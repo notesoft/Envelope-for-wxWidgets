@@ -1,10 +1,10 @@
-# Envelope project
+# wxWidgets-Envelope project
 
-Envelope is a wrapper to other projects, used as a workaround for third party bugs and features that cannot/should not be fixed within those projects. It is also a bridge between public open source projects and their private use.
+Envelope is a wrapper to wxWidgets, used as a workaround for third party bugs and features that cannot/should not be fixed within wxWidgets projects. It is also a bridge between public open source projects and their private use.
 
 # License
 
-The Envelope project itself has a MIT license.
+wxWidgets-Envelope is an extremely thin wrapper around https://www.wxwidgets.org/  that uses the wxWidgets license https://www.wxwidgets.org/about/licence/. The wxWidgets project, included as an unofficial submodule (./native folder), has its copyright and license holders kept as is.
 
-WARNING: Projects included as submodules (./native folder) have their own copyright holders and licenses, which will be kept as is. 
+The Envelope project itself has a MIT license.
 
