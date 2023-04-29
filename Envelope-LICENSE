@@ -1,4 +1,6 @@
-MIT License
+MIT License for Envelope project
+
+NOTE: Projects included as submodules (./native folder) have their own copyright holders and licenses, which will be kept as is. 
 
 Copyright (c) 2023 Sergey Khalyutn
 

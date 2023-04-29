@@ -106,14 +106,7 @@ function(enInitPrivate)
     endif()
 
 
-
 endfunction()
-
-
-    ## !!  freeglut-devel
-
-## https://github.com/llvm/llvm-project/issues/61997 
-## https://github.com/wxWidgets/wxWidgets/issues/23428               
 
 
 macro(enIncludeCMakeFolders enGroup enFolder)
