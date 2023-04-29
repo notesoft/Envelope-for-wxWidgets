@@ -1,6 +1,6 @@
 # Envelope-for-wxWidgets project
 
-Envelope is a wrapper to wxWidgets, used as a workaround for third party bugs and features that cannot/should not be fixed within wxWidgets projects. It is also a bridge between public open source projects and their private use.
+Envelope is a wrapper to wxWidgets, used as a workaround for third party bugs and features that cannot/should not be fixed within wxWidgets project. It is also a bridge between public open source projects and their private use.
 
 Envelope-for-wxWidgets is actually a fork of wxWidgets. Envelope-for-wxWidgets team is not related with wxWidgets team.
 
