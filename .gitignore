@@ -1,3 +1,5 @@
 .vscode
 build
 private/*
+native
+
