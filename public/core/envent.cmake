@@ -62,21 +62,29 @@ endmacro()
 
 macro(enInitInitializationVars)
 
-    set(ENV{MSYS2_ARG_CONV_EXCL} "*")
+    message(STATUS "=== enInitInitializationVars")
+
+    if (WIN32)
+        set(enIsMSW ON)
+    endif()
+
+    if (enIsMSW)
+    #     execute_process(COMMAND "export MSYS2_ARG_CONV_EXCL=/implib:" )
+    #     execute_process(COMMAND "SET MSYS2_ARG_CONV_EXCL=/implib:" )
+    endif()
 
 endmacro()
 
 macro(enInitImplemetationVars)
+
+    message(STATUS "=== ImplemetationVars")
 
     set(enCompiler ${CMAKE_CXX_COMPILER_ID}) 
 
     if (${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
         set(enIsClang ON)
     endif()
-    if (WIN32)
-        set(enIsMSW ON)
-    endif()
-
+ 
 
 endmacro()
 
