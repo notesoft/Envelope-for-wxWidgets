@@ -28,15 +28,15 @@ function(enAddAlwaysTargets)
 
     add_custom_target(do_always_before ALL command ${CMAKE_COMMAND} 
        -DenROOT_DIR=${CMAKE_SOURCE_DIR}
-        -DenUse_MSW=${enUse_MSW} 
-      -DenUse_CLANG=${enUse_CLANG}
+        -DenIsMSW=${enIsMSW} 
+      -DenIsClang=${enIsClang}
       -DenMS_MT_EXE=${enMS_MT_EXE}
     -P ${CMAKE_SOURCE_DIR}/public/core/build-before.cmake WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} )  
 
     add_custom_target(do_always_after  ALL command ${CMAKE_COMMAND} 
        -DenROOT_DIR=${CMAKE_SOURCE_DIR}
-        -DenUse_MSW=${enUse_MSW} 
-      -DenUse_CLANG=${enUse_CLANG}
+        -DenIsMSW=${enIsMSW} 
+      -DenIsClang=${enIsClang}
       -DenMS_MT_EXE=${enMS_MT_EXE}
     -P ${CMAKE_SOURCE_DIR}/public/core/build-after.cmake WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} )   
 

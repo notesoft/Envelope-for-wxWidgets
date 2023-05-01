@@ -1,23 +1,5 @@
 
 
-macro(enEnventoryItems)
-
-    if (${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
-        set(enUse_CLANG ON)
-    endif()
-    if (WIN32)
-        set(enUse_MSW ON)
-    endif()
-
-    set(enCompiler ${CMAKE_CXX_COMPILER_ID}) 
-
-    message(STATUS "=================================================================")
-    message(STATUS "enUse_CLANG : ${enUse_CLANG}")
-    message(STATUS "  enUse_MSW : ${enUse_MSW}")
-    message(STATUS "=================================================================")
-
-endmacro()
-
 
 function(enInitPrivate)
 
@@ -134,16 +116,20 @@ endmacro()
 
 
 macro(enInitialization)
+    enInitInitializationVars()
     enInitPrivate()
     if (EXISTS ${CMAKE_SOURCE_DIR}/public/core/native.cmake)
         include(./public/core/native.cmake)
     endif()
     enIncludeCMakeItems("initialization") 
+    enShowInitializationEnventory()
+    enShowPATH()
 endmacro()
 
 macro(enImplemenation)
-    enEnventoryItems()
+    enInitImplemetationVars()
     enIncludeCMakeItems("implemenation") 
+    enShowImplemenationEnventory()
 endmacro()
 
 macro(enEncapsulation)
@@ -164,3 +150,6 @@ macro(enFinalization)
     enAddAlwaysTargets()
     enIncludeCMakeItems("finalization") 
 endmacro()
+
+
+
