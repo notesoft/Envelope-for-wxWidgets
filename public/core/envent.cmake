@@ -9,9 +9,10 @@
 
 function(enShowPATH)
 
+
     message(STATUS "") 
     message(STATUS "=== PATH variable item is: =======================================") 
-
+    
     set(path_list $ENV{Path}) 
     string(REPLACE "\\" "/"  path_list "${path_list}")
 
@@ -33,7 +34,7 @@ macro(enShowInitializationEnventory)
     message(STATUS "=== Initialization Enventory: ====================================")
     message(STATUS "                           WIN32 = ${WIN32}")
     message(STATUS "                   CMAKE_COMMAND = ${CMAKE_COMMAND}")
-    message(STATUS "             MSYS2_ARG_CONV_EXCL = $ENV{MSYS2_ARG_CONV_EXCL}")
+    message(STATUS "             MSYS2_ARG_CONV_EXCL = $ENV{MSYS2_ARG_CONV_EXCL}")    
     message(STATUS "=================================================================") 
 endmacro()
 
@@ -50,14 +51,17 @@ macro(enShowImplemenationEnventory)
     message(STATUS "                CMAKE_BUILD_TOOL = ${CMAKE_BUILD_TOOL} ")
     message(STATUS "               CMAKE_SYSTEM_NAME = ${CMAKE_SYSTEM_NAME} ")
     message(STATUS "          CMAKE_SYSTEM_PROCESSOR = ${CMAKE_SYSTEM_PROCESSOR} ")
-#   message(STATUS "          PROCESSOR_ARCHITECTURE = ${PROCESSOR_ARCHITECTURE} ")
+    message(STATUS "     CMAKE_HOST_SYSTEM_PROCESSOR = ${CMAKE_HOST_SYSTEM_PROCESSOR}")
     message(STATUS "                           WIN32 = ${WIN32} ")
     message(STATUS "           CMAKE_CXX_COMPILER_ID = ${CMAKE_CXX_COMPILER_ID} ")
     message(STATUS "                                 -  ") 
     message(STATUS "                       enIsClang = ${enIsClang}")
     message(STATUS "                         enIsMSW = ${enIsMSW}")
+    message(STATUS "                        enIsMSYS = ${enIsMSYS}")    
+    message(STATUS "                         enIsX86 = ${enIsX86}")    
     message(STATUS "=================================================================") 
 
+        
 endmacro()
 
 macro(enInitInitializationVars)
@@ -69,8 +73,20 @@ macro(enInitInitializationVars)
     endif()
 
     if (enIsMSW)
-    #     execute_process(COMMAND "export MSYS2_ARG_CONV_EXCL=/implib:" )
-    #     execute_process(COMMAND "SET MSYS2_ARG_CONV_EXCL=/implib:" )
+#
+#        execute_process(COMMAND "echo \${env:path}" OUTPUT_VARIABLE enPATH)
+#        message(STATUS "enPATH ========   ${enPATH}")
+
+         string(REPLACE   "make" "pacman" enPacman  ${CMAKE_MAKE_PROGRAM})   
+         execute_process(COMMAND "${CMAKE_MAKE_PROGRAM}" --version OUTPUT_VARIABLE enMakeVersion )
+#        execute_process(COMMAND "pacman"               --version WORKING_DIRECTORY "C:/TOOLSET/msys64/usr/bin"  OUTPUT_VARIABLE enPacmanBuiltfor )
+         execute_process(COMMAND "${enPacman}"           --version  OUTPUT_VARIABLE enPacmanVersion )
+
+         if (enMakeVersion MATCHES ".\nBuilt for.*msys\n." AND enPacmanVersion  MATCHES ".Pacman."  )
+            set(enIsMSYS ON)
+        endif()
+
+        # $ENV{PROCESSOR_ARCHITECTURE}
     endif()
 
 endmacro()
@@ -84,7 +100,12 @@ macro(enInitImplemetationVars)
     if (${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
         set(enIsClang ON)
     endif()
- 
+
+    if (CMAKE_SYSTEM_PROCESSOR MATCHES "(x86)|(X86)|(amd64)|(AMD64)")
+        set (enIsX86 ON)
+    else ()
+        set (enIsX86 OFF)
+    endif () 
 
 endmacro()
 
